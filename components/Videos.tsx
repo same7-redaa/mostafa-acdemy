@@ -12,27 +12,28 @@ interface VideoCardProps {
 
 const VideoCard: React.FC<VideoCardProps> = ({ title, description, thumbnail, videoUrl, isActive = false, position = 'center' }) => {
   const getCardClasses = () => {
-    const baseClasses = "absolute top-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out cursor-pointer";
+    const baseClasses = "absolute top-1/2 -translate-y-1/2 transition-all duration-300 ease-out cursor-pointer will-change-transform";
     
     if (position === 'center') {
       return `${baseClasses} left-1/2 -translate-x-1/2 w-[90%] md:w-[600px] opacity-100 scale-100 z-30`;
     } else if (position === 'right') {
-      return `${baseClasses} right-[2%] md:right-[5%] w-[70%] md:w-[400px] opacity-50 scale-85 z-20 hover:opacity-70`;
+      return `${baseClasses} right-[2%] md:right-[5%] w-[70%] md:w-[400px] opacity-50 scale-85 z-20`;
     } else {
-      return `${baseClasses} left-[2%] md:left-[5%] w-[70%] md:w-[400px] opacity-50 scale-85 z-20 hover:opacity-70`;
+      return `${baseClasses} left-[2%] md:left-[5%] w-[70%] md:w-[400px] opacity-50 scale-85 z-20`;
     }
   };
 
   return (
     <div className={getCardClasses()}>
-      <div className="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-emerald-green/30 transition-shadow duration-300">
+      <div className="group relative overflow-hidden rounded-2xl shadow-2xl transition-shadow duration-200">
         <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-emerald-green/10 to-warm-gold/10">
           <img 
             src={thumbnail} 
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-green/90 via-emerald-green/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-green/90 via-emerald-green/50 to-transparent opacity-60"></div>
           
           {isActive && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -40,9 +41,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ title, description, thumbnail, vi
                 href={videoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-20 md:w-24 h-20 md:h-24 bg-gradient-to-br from-warm-gold to-soft-gold rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-110 hover:rotate-6 group-hover:shadow-warm-gold/50"
+                className="relative w-20 md:w-24 h-20 md:h-24 bg-gradient-to-br from-warm-gold to-soft-gold rounded-full flex items-center justify-center shadow-2xl"
               >
-                <div className="absolute inset-0 rounded-full bg-warm-gold animate-ping opacity-20"></div>
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-10 md:w-12 h-10 md:h-12 text-white ml-1 relative z-10" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -60,7 +60,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ title, description, thumbnail, vi
         
         <div className="bg-white p-4 md:p-6 relative">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-green via-warm-gold to-emerald-green"></div>
-          <h3 className={`font-bold text-emerald-green mb-2 line-clamp-2 group-hover:text-warm-gold transition-colors duration-300 ${isActive ? 'text-lg md:text-xl' : 'text-sm md:text-base'}`}>
+          <h3 className={`font-bold text-emerald-green mb-2 line-clamp-2 ${isActive ? 'text-lg md:text-xl' : 'text-sm md:text-base'}`}>
             {title}
           </h3>
           {isActive && (

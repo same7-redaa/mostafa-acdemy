@@ -154,12 +154,12 @@ const Testimonials: React.FC = () => {
 
           {/* Mobile Carousel */}
           <div className="md:hidden relative">
-            <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 ease-in-out"
+            <div className="overflow-hidden px-4">
+              <div className="flex transition-transform duration-300 ease-out"
                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {testimonials.map((testimonial) => (
                   <div key={testimonial.id} className="w-full flex-shrink-0 px-2">
-                    <div className="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-emerald-green relative">
+                    <div className="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-emerald-green relative">
                       {/* أيقونة الاقتباس */}
                       <div className="absolute -top-4 -right-4 w-14 h-14 bg-gradient-to-br from-warm-gold to-soft-gold rounded-2xl flex items-center justify-center shadow-lg rotate-12">
                         <QuoteIcon className="w-7 h-7 text-white" />
@@ -171,12 +171,12 @@ const Testimonials: React.FC = () => {
                       </div>
 
                       {/* النص */}
-                      <p className="text-gray-700 leading-relaxed mb-6">
+                      <p className="text-gray-700 leading-relaxed mb-4 text-sm">
                         "{testimonial.text}"
                       </p>
 
                       {/* معلومات المستخدم */}
-                      <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                      <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
                         <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-green to-emerald-green/80 rounded-full flex items-center justify-center">
                           <UserIcon className="w-6 h-6 text-white" />
                         </div>
