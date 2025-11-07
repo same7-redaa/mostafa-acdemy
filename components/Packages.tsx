@@ -44,7 +44,7 @@ const PackageCard: React.FC<PackageProps> = ({
       <div className="text-center mb-6">
         {typeof icon === 'string' ? (
           <div className="w-48 h-48 mx-auto -mt-16">
-            <img src={icon} alt={name} className="w-full h-full object-contain" />
+            <img src={icon} alt={name} className="w-full h-full object-contain" loading="eager" />
           </div>
         ) : (
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-green/10 to-warm-gold/10 rounded-2xl mb-4 text-emerald-green">

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowLeftIcon } from './icons';
 
 const Hero: React.FC = () => {
@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* صورة بسم الله - تظهر في الأعلى على الهواتف */}
           <div className="lg:hidden text-center order-1">
-            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="w-48 md:w-56 mx-auto" />
+            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="w-48 md:w-56 mx-auto" loading="eager" />
           </div>
 
           {/* اللوجو */}
@@ -24,13 +24,14 @@ const Hero: React.FC = () => {
               src="logo.gif"
               alt="شعار أكاديمية مصطفى كامل"
               className="w-full h-full object-contain drop-shadow-xl"
+              loading="eager"
             />
           </div>
 
           {/* النص */}
           <div className="text-center lg:text-right animate-fade-in-up order-3 lg:order-1 -mt-24 lg:mt-0">
             {/* صورة بسم الله - تظهر على الشاشات الكبيرة فقط */}
-            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="hidden lg:block w-48 md:w-56 mx-auto lg:mx-0 mb-4" />
+            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="hidden lg:block w-48 md:w-56 mx-auto lg:mx-0 mb-4" loading="eager" />
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
               <span className="whitespace-nowrap">أكاديمية مصطفى كامل</span>
             </h1>

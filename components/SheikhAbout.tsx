@@ -55,6 +55,7 @@ const SheikhAbout: React.FC = () => {
                       loop
                       muted
                       playsInline
+                      preload="auto"
                       poster="من انا.png"
                     >
                       متصفحك لا يدعم تشغيل الفيديو.
