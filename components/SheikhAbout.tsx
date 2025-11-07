@@ -49,13 +49,13 @@ const SheikhAbout: React.FC = () => {
                     <div className="absolute bottom-2 right-2 w-6 h-6 border-b-3 border-r-3 border-warm-gold z-10"></div>
                     
                     <video 
-                      src="/1.mp4" 
+                      src="1.mp4" 
                       className="w-full h-full object-cover aspect-[3/4]"
                       autoPlay
                       loop
                       muted
                       playsInline
-                      poster="/من انا.png"
+                      poster="من انا.png"
                     >
                       متصفحك لا يدعم تشغيل الفيديو.
                     </video>

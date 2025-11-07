@@ -94,7 +94,7 @@ const PackageCard: React.FC<PackageProps> = ({
 const Packages: React.FC = () => {
   const packages: PackageProps[] = [
     {
-      icon: '/باقة البداية.png',
+      icon: 'باقة البداية.png',
       name: 'باقة البداية',
       hours: '4 ساعات شهريًا',
       sessions: '4 حصص في الشهر',
@@ -104,7 +104,7 @@ const Packages: React.FC = () => {
       description: 'مناسبة للمبتدئين أو لمن يرغب في وتيرة خفيفة ومنتظمة.'
     },
     {
-      icon: '/باقة التقدم.png',
+      icon: 'باقة التقدم.png',
       name: 'باقة التقدّم',
       hours: '8 ساعات شهريًا',
       sessions: '8 حصص في الشهر',
@@ -114,7 +114,7 @@ const Packages: React.FC = () => {
       description: 'مثالية لمن يرغب في تحقيق تقدّم مستمر وثابت في الحفظ والمراجعة.'
     },
     {
-      icon: '/باقة الإتقان.png',
+      icon: 'باقة الإتقان.png',
       name: 'باقة الإتقان',
       hours: '12 ساعة شهريًا',
       sessions: '12 حصة في الشهر',
@@ -124,7 +124,7 @@ const Packages: React.FC = () => {
       description: 'مناسبة لمن يسعى إلى إتقان الحفظ بسرعة مع متابعة دقيقة من المعلمة.'
     },
     {
-      icon: '/باقة التميز.png',
+      icon: 'باقة التميز.png',
       name: 'باقة التميّز',
       hours: '16 ساعة شهريًا',
       sessions: '16 حصة في الشهر',
@@ -141,7 +141,7 @@ const Packages: React.FC = () => {
       <div 
         className="absolute inset-0 opacity-50 z-0"
         style={{ 
-          backgroundImage: "url('/Islamic Vector.png')",
+          backgroundImage: "url('Islamic Vector.png')",
           backgroundSize: 'auto',
           backgroundRepeat: 'repeat',
           backgroundPosition: 'center'

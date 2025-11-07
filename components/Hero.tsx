@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       {/* Background image layer */}
       <div 
         className="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-30 z-0"
-        style={{ backgroundImage: "url('/back.png')" }}
+        style={{ backgroundImage: "url('back.png')" }}
       ></div>
 
       {/* Content layer, positioned above the background */}
@@ -15,13 +15,13 @@ const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* صورة بسم الله - تظهر في الأعلى على الهواتف */}
           <div className="lg:hidden text-center order-1">
-            <img src="/بسم الله.png" alt="بسم الله الرحمن الرحيم" className="w-48 md:w-56 mx-auto" />
+            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="w-48 md:w-56 mx-auto" />
           </div>
 
           {/* اللوجو */}
           <div className="relative flex justify-center items-center w-full max-w-md mx-auto lg:max-w-xl xl:max-w-2xl h-80 lg:h-[40rem] xl:h-[45rem] animate-fade-in-right order-2 lg:order-2 mb-8 lg:mb-0 -mt-24">
             <img
-              src="/logo.gif"
+              src="logo.gif"
               alt="شعار أكاديمية مصطفى كامل"
               className="w-full h-full object-contain drop-shadow-xl"
             />
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           {/* النص */}
           <div className="text-center lg:text-right animate-fade-in-up order-3 lg:order-1 -mt-24 lg:mt-0">
             {/* صورة بسم الله - تظهر على الشاشات الكبيرة فقط */}
-            <img src="/بسم الله.png" alt="بسم الله الرحمن الرحيم" className="hidden lg:block w-48 md:w-56 mx-auto lg:mx-0 mb-4" />
+            <img src="بسم الله.png" alt="بسم الله الرحمن الرحيم" className="hidden lg:block w-48 md:w-56 mx-auto lg:mx-0 mb-4" />
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
               <span className="whitespace-nowrap">أكاديمية مصطفى كامل</span>
             </h1>

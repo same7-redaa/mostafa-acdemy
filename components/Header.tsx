@@ -29,7 +29,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="border-2 border-white rounded-full p-1 shadow-lg">
-            <img src="/logo2.png" alt="أكاديمية مصطفى كامل" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+            <img src="logo2.png" alt="أكاديمية مصطفى كامل" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
           </div>
           <span className={`text-white text-sm md:text-lg lg:text-xl font-bold font-serif-elegant whitespace-nowrap transition-all duration-300 ${
             isScrolled ? 'block' : 'hidden md:block'
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between p-4 border-b border-white/20">
             <div className="flex items-center gap-2">
               <div className="border-2 border-warm-gold rounded-full p-1">
-                <img src="/logo2.png" alt="أكاديمية مصطفى كامل" className="h-10 w-10 object-contain" />
+                <img src="logo2.png" alt="أكاديمية مصطفى كامل" className="h-10 w-10 object-contain" />
               </div>
               <span className="text-white text-sm font-bold whitespace-nowrap">أكاديمية مصطفى كامل</span>
             </div>

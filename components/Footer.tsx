@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-4">
             <div className="border-3 border-warm-gold rounded-full p-2 shadow-xl">
-              <img src="/logo2.png" alt="أكاديمية مصطفى كامل" className="h-20 w-20 object-contain" />
+              <img src="logo2.png" alt="أكاديمية مصطفى كامل" className="h-20 w-20 object-contain" />
             </div>
           </div>
           <h3 className="font-display text-3xl font-bold mb-3 bg-gradient-to-r from-warm-gold to-soft-gold bg-clip-text text-transparent">

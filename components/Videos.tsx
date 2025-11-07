@@ -142,7 +142,7 @@ const Videos: React.FC = () => {
       {/* Background image layer */}
       <div 
         className="absolute inset-0 bg-center bg-no-repeat bg-cover z-0"
-        style={{ backgroundImage: "url('/0000.jpg')" }}
+        style={{ backgroundImage: "url('0000.jpg')" }}
       ></div>
 
       {/* طبقة تعتيم للنصوص */}
