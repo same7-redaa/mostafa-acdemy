@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Bookings Collection - حجوزات الموقع
+    match /bookings/{booking} {
+      // السماح بالقراءة للمصادقين فقط (لوحة التحكم)
+      allow read: if request.auth != null;
+      // السماح بالكتابة للجميع (نموذج الحجز من الموقع)
+      allow create: if true;
+      // السماح بالتحديث والحذف للمصادقين فقط
+      allow update, delete: if request.auth != null;
+    }
+    
+    // Videos Collection - فيديوهات اليوتيوب
+    match /videos/{video} {
+      // السماح بالقراءة للجميع
+      allow read: if true;
+      // السماح بالكتابة للمصادقين فقط (لوحة التحكم)
+      allow create, update, delete: if request.auth != null;
+    }
+    
+    // Users Collection (اختياري)
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

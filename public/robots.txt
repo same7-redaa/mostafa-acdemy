@@ -1,0 +1,24 @@
+# robots.txt for Mostafa Kamel Academy
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://mostafa-academy.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Special rules for search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin.html
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin.html

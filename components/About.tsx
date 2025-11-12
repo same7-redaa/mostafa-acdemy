@@ -10,6 +10,7 @@ const About: React.FC = () => {
               src="https://picsum.photos/id/23/800/600" 
               alt="Community gathering" 
               className="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+              loading="eager"
             />
           </div>
           <div className="animate-fade-in-right">

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="logo2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم - أكاديمية مصطفى كامل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Tajawal', 'sans-serif'],
+            },
+            colors: {
+              'emerald-green': '#0a5439',
+              'soft-gold': '#d19c4d',
+              'warm-gold': '#f3c47f',
+              'dark-charcoal': '#222222',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Tajawal', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="admin-root"></div>
+    <script type="module" src="/admin.tsx"></script>
+  </body>
+</html>

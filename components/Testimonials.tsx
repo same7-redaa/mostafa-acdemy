@@ -1,255 +1,261 @@
-import React, { useState } from 'react';
-import { QuoteIcon, StarIcon, UserIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
+﻿import { useState, useRef, useEffect } from 'react';
+import { QuoteIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon } from './icons';
 
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  image?: string;
-  rating: number;
-  text: string;
-  date: string;
-}
+const Testimonials = () => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "أم محمد",
-    role: "ولية أمر طالب",
-    rating: 5,
-    text: "الحمد لله، ابني تحسن كثيراً في قراءة القرآن وحفظه. الشيخ عبدالرحمن متمكن جداً وأسلوبه في التعليم رائع. ابني بقى يحب حصص القرآن ومتحمس لها.",
-    date: "منذ شهرين"
-  },
-  {
-    id: 2,
-    name: "أحمد سعيد",
-    role: "طالب في الأكاديمية",
-    rating: 5,
-    text: "جزاك الله خيراً يا شيخ عبدالرحمن، الدروس واضحة جداً والتفسير سهل ومفهوم. استفدت كتير من الحصص وبحس إني بفهم القرآن أكتر.",
-    date: "منذ 3 أسابيع"
-  },
-  {
-    id: 3,
-    name: "فاطمة أحمد",
-    role: "طالبة في الأكاديمية",
-    rating: 5,
-    text: "أفضل أكاديمية لتعليم القرآن! الشيخ صبور ومهتم بكل طالب. حصلت على إجازة القرآن بفضل الله ثم بفضل تعليمه المتقن.",
-    date: "منذ شهر"
-  },
-  {
-    id: 4,
-    name: "أبو عبدالله",
-    role: "ولي أمر طالبة",
-    rating: 5,
-    text: "ماشاء الله تبارك الله، بنتي حفظت 5 أجزاء في أقل من سنة. الأكاديمية ممتازة والمتابعة مستمرة. جزاكم الله خيراً.",
-    date: "منذ أسبوعين"
-  },
-  {
-    id: 5,
-    name: "محمود حسن",
-    role: "طالب في الأكاديمية",
-    rating: 5,
-    text: "الدعم النفسي والتربوي اللي بيقدمه الشيخ مع تعليم القرآن حاجة مميزة جداً. بتحس إنك مش بس بتتعلم قرآن، لكن كمان بتتربى.",
-    date: "منذ شهر ونصف"
-  },
-  {
-    id: 6,
-    name: "أم عائشة",
-    role: "ولية أمر طالبة",
-    rating: 5,
-    text: "أسلوب الشيخ في التعليم مناسب للأطفال والكبار. بنتي عمرها 7 سنين وبتحب الحصص جداً. ربنا يبارك في علمكم.",
-    date: "منذ 3 أسابيع"
-  }
-];
+  const testimonialImages = [
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_27763b26.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_30b98e72.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_4317dbc7.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_514c5415.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_9dd43351.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.41_a749c85c.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.42_74747587.jpg',
+    'اراء/WhatsApp Image 2025-11-04 at 16.28.42_f9129a77.jpg',
+    'اراء/WhatsApp Image 2025-11-10 at 03.39.18_78169e86.jpg',
+  ];
 
-const Testimonials: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // التمرير التلقائي
+  useEffect(() => {
+    if (!isAutoScrolling || !scrollContainerRef.current) return;
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % Math.ceil(testimonials.length / 3));
+    const container = scrollContainerRef.current;
+    let scrollInterval: NodeJS.Timeout;
+
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+      }, 3000);
+    };
+
+    startAutoScroll();
+
+    return () => {
+      if (scrollInterval) clearInterval(scrollInterval);
+    };
+  }, [isAutoScrolling]);
+
+  const openImage = (index: number) => {
+    setSelectedImage(index);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3));
+  const closeImage = () => {
+    setSelectedImage(null);
   };
 
-  const renderStars = (rating: number) => {
-    return (
-      <div className="flex gap-1">
-        {[...Array(5)].map((_, i) => (
-          <StarIcon
-            key={i}
-            className={`w-5 h-5 ${
-              i < rating ? 'text-warm-gold fill-warm-gold' : 'text-gray-300'
-            }`}
-          />
-        ))}
-      </div>
-    );
+  const nextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % testimonialImages.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage - 1 + testimonialImages.length) % testimonialImages.length);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    setIsAutoScrolling(false);
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      const newScrollPosition = direction === 'right' 
+        ? scrollContainerRef.current.scrollLeft - scrollAmount
+        : scrollContainerRef.current.scrollLeft + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth'
+      });
+      
+      setTimeout(() => setIsAutoScrolling(true), 5000);
+    }
   };
 
   return (
-    <section id="testimonials" className="py-20 md:py-24 bg-gradient-to-b from-white via-emerald-green/5 to-white relative overflow-hidden">
-      {/* الخلفية الزخرفية */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-green rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-warm-gold rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* العنوان */}
-        <div className="text-center mb-16 animate-on-scroll">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-green to-emerald-green/90 text-white px-6 py-3 rounded-full mb-6 shadow-xl">
-            <QuoteIcon className="w-6 h-6" />
-            <span className="font-bold">آراء الطلاب</span>
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}} />
+      
+      <section id="testimonials" className="py-20 bg-gradient-to-b from-white to-emerald-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <div className="absolute inset-0 bg-emerald-600/20 rounded-full blur-xl"></div>
+                <QuoteIcon className="w-16 h-16 text-emerald-600 relative z-10" />
+              </div>
+            </div>
+            <div className="relative inline-block mb-4">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 via-warm-gold/10 to-emerald-600/10 rounded-lg transform rotate-1"></div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 relative px-4 py-2">
+                ماذا يقول طلابنا
+              </h2>
+            </div>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-warm-gold to-transparent mx-auto mb-4"></div>
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              شهادات ومحادثات طلابنا تعكس جودة التعليم والتميز في الأداء
+            </p>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-green mb-4">
-            ماذا يقول طلابنا
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-warm-gold to-transparent mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-            تجارب حقيقية من طلابنا وأولياء الأمور عن رحلتهم في تعلم القرآن الكريم
-          </p>
-        </div>
 
-        {/* البطاقات */}
-        <div className="max-w-7xl mx-auto">
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {testimonials.map((testimonial, index) => (
+        {/* معرض متحرك للصور */}
+        <div className="relative max-w-7xl mx-auto">
+          {/* أزرار التنقل */}
+          <button
+            onClick={() => scroll('right')}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110"
+            aria-label="السابق"
+          >
+            <ChevronRightIcon className="w-6 h-6" />
+          </button>
+          <button
+            onClick={() => scroll('left')}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110"
+            aria-label="التالي"
+          >
+            <ChevronLeftIcon className="w-6 h-6" />
+          </button>
+
+          {/* المعرض المتحرك */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-12 scrollbar-hide"
+            style={{ 
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            {testimonialImages.map((image, index) => (
               <div
-                key={testimonial.id}
-                className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-emerald-green relative group animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                key={index}
+                className="flex-shrink-0 w-[280px] group cursor-pointer"
+                onClick={() => {
+                  setIsAutoScrolling(false);
+                  openImage(index);
+                }}
+                onMouseEnter={() => setIsAutoScrolling(false)}
+                onMouseLeave={() => setIsAutoScrolling(true)}
               >
-                {/* أيقونة الاقتباس */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-warm-gold to-soft-gold rounded-2xl flex items-center justify-center shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300">
-                  <QuoteIcon className="w-8 h-8 text-white" />
-                </div>
-
-                {/* التقييم */}
-                <div className="mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
-
-                {/* النص */}
-                <p className="text-gray-700 leading-relaxed mb-6 text-base lg:text-lg">
-                  "{testimonial.text}"
-                </p>
-
-                {/* معلومات المستخدم */}
-                <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-green to-emerald-green/80 rounded-full flex items-center justify-center">
-                    <UserIcon className="w-6 h-6 text-white" />
+                <div className="relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-emerald-100 hover:border-emerald-400 hover:scale-105">
+                  {/* الصورة */}
+                  <div className="relative overflow-hidden h-[380px] bg-gradient-to-b from-gray-50 to-white">
+                    <img
+                      src={image}
+                      alt={`تقييمات وآراء طلاب أكاديمية مصطفى كامل لتعليم القرآن الكريم - رأي ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                    />
+                    
+                    {/* Overlay أسود شفاف دائم */}
+                    <div className="absolute inset-0 bg-black/30 transition-all duration-300 group-hover:bg-black/40" />
+                    
+                    {/* أيقونة العدسة دائمة الظهور في المنتصف */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="bg-white/90 text-emerald-600 p-4 rounded-full shadow-xl transition-all duration-300 group-hover:scale-110">
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-emerald-green">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
-                  </div>
-                  <span className="text-xs text-gray-400">{testimonial.date}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Mobile Carousel */}
-          <div className="md:hidden relative">
-            <div className="overflow-hidden px-4">
-              <div className="flex transition-transform duration-300 ease-out"
-                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {testimonials.map((testimonial) => (
-                  <div key={testimonial.id} className="w-full flex-shrink-0 px-2">
-                    <div className="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-emerald-green relative">
-                      {/* أيقونة الاقتباس */}
-                      <div className="absolute -top-4 -right-4 w-14 h-14 bg-gradient-to-br from-warm-gold to-soft-gold rounded-2xl flex items-center justify-center shadow-lg rotate-12">
-                        <QuoteIcon className="w-7 h-7 text-white" />
-                      </div>
+        </div>
 
-                      {/* التقييم */}
-                      <div className="mb-4">
-                        {renderStars(testimonial.rating)}
-                      </div>
-
-                      {/* النص */}
-                      <p className="text-gray-700 leading-relaxed mb-4 text-sm">
-                        "{testimonial.text}"
-                      </p>
-
-                      {/* معلومات المستخدم */}
-                      <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-green to-emerald-green/80 rounded-full flex items-center justify-center">
-                          <UserIcon className="w-6 h-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-bold text-emerald-green">{testimonial.name}</h4>
-                          <p className="text-sm text-gray-500">{testimonial.role}</p>
-                        </div>
-                        <span className="text-xs text-gray-400">{testimonial.date}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* أزرار التنقل للموبايل */}
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 bg-gradient-to-r from-emerald-green to-emerald-green/90 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-                aria-label="السابق"
-              >
-                <ChevronRightIcon className="w-6 h-6" />
-              </button>
+        {selectedImage !== null && (
+          <div
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+            onClick={closeImage}
+          >
+            {/* Container للصورة والتحكم */}
+            <div className="relative w-full h-full flex flex-col items-center justify-center p-4 md:p-8">
               
-              {/* Dots */}
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      currentIndex === index
-                        ? 'w-8 bg-gradient-to-r from-emerald-green to-warm-gold'
-                        : 'w-2 bg-gray-300'
-                    }`}
-                    aria-label={`الانتقال إلى الرأي ${index + 1}`}
-                  />
-                ))}
+              {/* شريط علوي بالأزرار */}
+              <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-4 md:px-8 z-30">
+                {/* زر الإغلاق */}
+                <button
+                  onClick={closeImage}
+                  className="bg-red-600 hover:bg-red-700 text-white p-3 rounded-lg shadow-2xl transition-all hover:scale-105 flex items-center gap-2"
+                  aria-label="إغلاق"
+                >
+                  <CloseIcon className="w-5 h-5" />
+                  <span className="hidden md:inline text-sm font-bold">إغلاق</span>
+                </button>
+
+                {/* العداد */}
+                <div className="bg-emerald-600 text-white px-5 py-2 rounded-lg shadow-xl">
+                  <p className="text-sm font-bold flex items-center gap-2">
+                    <span>{selectedImage + 1}</span>
+                    <span className="text-white/60">/</span>
+                    <span>{testimonialImages.length}</span>
+                  </p>
+                </div>
               </div>
 
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 bg-gradient-to-r from-emerald-green to-emerald-green/90 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-                aria-label="التالي"
+              {/* الصورة */}
+              <div
+                className="relative max-w-5xl max-h-[calc(100vh-150px)] w-full flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
               >
-                <ChevronLeftIcon className="w-6 h-6" />
-              </button>
+                <img
+                  src={testimonialImages[selectedImage]}
+                  alt="شهادات وتقييمات طلاب أكاديمية مصطفى كامل في تعليم القرآن والتجويد"
+                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                  loading="eager"
+                />
+              </div>
+
+              {/* أزرار التنقل السفلية */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
+                {/* زر السابق */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className="bg-white hover:bg-gray-100 text-emerald-600 p-4 rounded-lg shadow-2xl transition-all hover:scale-105 flex items-center gap-2"
+                  aria-label="الصورة السابقة"
+                >
+                  <ChevronRightIcon className="w-6 h-6" />
+                  <span className="hidden md:inline text-sm font-bold">السابق</span>
+                </button>
+
+                {/* زر التالي */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="bg-white hover:bg-gray-100 text-emerald-600 p-4 rounded-lg shadow-2xl transition-all hover:scale-105 flex items-center gap-2"
+                  aria-label="الصورة التالية"
+                >
+                  <span className="hidden md:inline text-sm font-bold">التالي</span>
+                  <ChevronLeftIcon className="w-6 h-6" />
+                </button>
+              </div>
             </div>
           </div>
+        )}
         </div>
-
-        {/* إحصائيات سريعة */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto animate-on-scroll">
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-4xl md:text-5xl font-bold text-emerald-green mb-2">500+</div>
-            <div className="text-gray-600 font-medium">طالب وطالبة</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-4xl md:text-5xl font-bold text-emerald-green mb-2">٩٨٪</div>
-            <div className="text-gray-600 font-medium">نسبة الرضا</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-4xl md:text-5xl font-bold text-emerald-green mb-2">٢٠٠+</div>
-            <div className="text-gray-600 font-medium">إجازة قرآنية</div>
-          </div>
-          <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-4xl md:text-5xl font-bold text-emerald-green mb-2">١٠+</div>
-            <div className="text-gray-600 font-medium">سنوات خبرة</div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/logo2.png</image:loc>
+      <image:title>شعار أكاديمية مصطفى كامل</image:title>
+      <image:caption>أكاديمية مصطفى كامل لتعليم القرآن الكريم</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/logo.gif</image:loc>
+      <image:title>شعار أكاديمية مصطفى كامل متحرك</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/بسم%20الله.png</image:loc>
+      <image:title>بسم الله الرحمن الرحيم</image:title>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://mostafa-academy.vercel.app/0000.jpg</video:thumbnail_loc>
+      <video:title>فيديو تعريفي بأكاديمية مصطفى كامل</video:title>
+      <video:description>تعرف على أكاديمية مصطفى كامل لتعليم القرآن الكريم والتجويد</video:description>
+      <video:content_loc>https://mostafa-academy.vercel.app/1.mp4</video:content_loc>
+      <video:player_loc>https://mostafa-academy.vercel.app/</video:player_loc>
+    </video:video>
+  </url>
+  
+  <!-- صفحة الباقات التعليمية -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#packages</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/باقة%20البداية.png</image:loc>
+      <image:title>باقة البداية - تعليم القرآن الكريم</image:title>
+      <image:caption>باقة البداية لتعليم القرآن والتجويد - 1599 جنيه</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/باقة%20التقدم.png</image:loc>
+      <image:title>باقة التقدم - تحفيظ القرآن</image:title>
+      <image:caption>باقة التقدم لحفظ القرآن والتجويد - 3199 جنيه</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/باقة%20الإتقان.png</image:loc>
+      <image:title>باقة الإتقان - إتقان القرآن الكريم</image:title>
+      <image:caption>باقة الإتقان لإتقان القرآن والتجويد - 4799 جنيه</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/باقة%20التميز.png</image:loc>
+      <image:title>باقة التميز - التميز في القرآن</image:title>
+      <image:caption>باقة التميز للتميز في القرآن والتجويد - 6399 جنيه</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/باقات%20المجموعات.png</image:loc>
+      <image:title>باقات المجموعات - تعليم جماعي</image:title>
+      <image:caption>باقات المجموعات للتعليم الجماعي - 600 جنيه</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- صفحة من نحن -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#sheikh-about</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mostafa-academy.vercel.app/من%20انا.png</image:loc>
+      <image:title>الشيخ مصطفى كامل</image:title>
+      <image:caption>مؤسس أكاديمية مصطفى كامل لتعليم القرآن</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- صفحة اللقاءات التلفزيونية -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#videos</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- صفحة الإجازات -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#ijazat</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- صفحة الآراء والتقييمات -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#testimonials</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- صفحة طرق الدفع -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#payment</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- صفحة لماذا نحن -->
+  <url>
+    <loc>https://mostafa-academy.vercel.app/#why-us</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

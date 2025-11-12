@@ -18,7 +18,7 @@ const SheikhAbout: React.FC = () => {
         <div className="text-center mb-16 animate-on-scroll">
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-green to-emerald-green/90 text-white px-6 py-3 rounded-full mb-6 shadow-xl">
             <AcademicCapIcon className="w-6 h-6" />
-            <span className="font-bold">نبذة عني</span>
+            <span className="font-bold">نبذة عن المؤسس</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-emerald-green mb-4">
             الشيخ عبدالرحمن مصطفى كامل
@@ -57,6 +57,8 @@ const SheikhAbout: React.FC = () => {
                       playsInline
                       preload="auto"
                       poster="من انا.png"
+                      title="فيديو تعريفي عن الشيخ مصطفى كامل - أكاديمية تعليم القرآن الكريم"
+                      aria-label="فيديو الشيخ مصطفى كامل مؤسس الأكاديمية"
                     >
                       متصفحك لا يدعم تشغيل الفيديو.
                     </video>
@@ -73,12 +75,12 @@ const SheikhAbout: React.FC = () => {
                     <AcademicCapIcon className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-emerald-green text-2xl mb-2">من أنا</h3>
+                    <h3 className="font-bold text-emerald-green text-2xl mb-2">من هو</h3>
                     <div className="w-16 h-1 bg-warm-gold rounded"></div>
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed text-lg">
-                  نشأت وتعلمت في الأزهر الشريف، وتخرجت في كلية أصول الدين – جامعة الأزهر الشريف، وأسعى منذ أكثر من عشر سنوات إلى تقديم تعليم قرآني أصيل يجمع بين العلم الشرعي والتربية النفسية والأسلوب التفاعلي الحديث.
+                  نشأ وتعلم بالأزهر الشريف وتخرج من كلية أصول الدين جامعة الأزهر الشريف بالقاهرة، ويسعى منذ أكثر من عشر سنوات إلى تقديم تعليم قرآني أصيل يجمع بين العلم الشرعي والتربية النفسية والأسلوب التفاعلي الحديث.
                 </p>
               </div>
             </div>
@@ -108,7 +110,7 @@ const SheikhAbout: React.FC = () => {
                   كورسات متخصصة في الإرشاد الأسري، علم النفس، التربية، الخرائط الذهنية، الذاكرة والعقل، والتغذية العلاجية
                 </ListItem>
                 <ListItem icon={<StarIcon className="w-4 h-4" />}>
-                  مدرب معتمد من نقابة التنمية البشرية والاتحاد الدولي للكوتشينج
+                  مدرب معتمد من نقابة التنمية البشرية، ولايف كوتش من الاتحاد الدولي للكوتشيز
                 </ListItem>
               </ul>
             </div>
@@ -122,7 +124,7 @@ const SheikhAbout: React.FC = () => {
                 <h3 className="font-bold text-white text-2xl">الخبرة والإنجازات</h3>
               </div>
               <p className="leading-relaxed text-gray-100 text-lg">
-                تمت استضافتي في برامج تلفزيونية مباشرة، وأسعى من خلال الأكاديمية إلى غرس حب القرآن والأخلاق والقيم الإسلامية في نفوس الطلاب، مع دعم نفسي وأسري متكامل يراعي احتياجات كل طالب وولي أمره.
+                تمت استضافة الشيخ في برامج تلفزيونية مباشرة، ويسعى من خلال الأكاديمية إلى غرس حب القرآن والأخلاق والقيم الإسلامية في نفوس الطلاب، مع دعم نفسي وأسري متكامل يراعي احتياجات كل طالب وولي أمره.
               </p>
             </div>
           </div>

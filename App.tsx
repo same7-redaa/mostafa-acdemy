@@ -5,7 +5,9 @@ import WhyUs from './components/WhyUs';
 import SheikhAbout from './components/SheikhAbout';
 import Testimonials from './components/Testimonials';
 import Videos from './components/Videos';
+import Ijazat from './components/Ijazat';
 import Packages from './components/Packages';
+import PaymentMethods from './components/PaymentMethods';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -19,6 +21,8 @@ const App: React.FC = () => {
         <Testimonials />
         <Videos />
         <Packages />
+        <Ijazat />
+        <PaymentMethods />
       </main>
       <Footer />
     </div>
