@@ -158,15 +158,15 @@ const Videos: React.FC = () => {
         </div>
 
         {selectedVideo && (
-          <div className="max-w-3xl mx-auto mb-12">
-            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+          <div className="w-full max-w-2xl lg:max-w-3xl mx-auto mb-12">
+            <div className="relative w-full" style={{ paddingBottom: '100%' }}>
               <iframe
                 src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
                 title={selectedVideo.title}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
-                className="w-full h-full"
+                className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl"
               ></iframe>
             </div>
             <div className="mt-6 text-center">
