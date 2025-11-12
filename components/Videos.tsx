@@ -21,7 +21,7 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ video, isActive = false, onClick }) => {
-  const thumbnail = `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+  const thumbnail = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
   
   return (
     <div 
@@ -39,8 +39,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive = false, onClick 
             alt={video.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
+            decoding="async"
             onError={(e) => {
-              e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+              e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`;
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-green/90 via-emerald-green/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity"></div>
@@ -164,6 +165,7 @@ const Videos: React.FC = () => {
                 title={selectedVideo.title}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
                 className="w-full h-full"
               ></iframe>
             </div>

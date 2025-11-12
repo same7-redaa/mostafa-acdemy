@@ -29,7 +29,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-3 md:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center gap-1.5 md:gap-2">
           <div className="border-2 border-white rounded-full p-0.5 md:p-1 shadow-lg">
-            <img src="logo2.png" alt="شعار أكاديمية مصطفى كامل لتعليم القرآن الكريم والتجويد والقراءات" className="h-9 w-9 md:h-11 md:w-11 lg:h-12 lg:w-12 object-contain" loading="eager" />
+            <img src="logo2.png" alt="شعار أكاديمية مصطفى كامل لتعليم القرآن الكريم والتجويد والقراءات" className="h-9 w-9 md:h-11 md:w-11 lg:h-12 lg:w-12 object-contain" fetchpriority="high" decoding="async" />
           </div>
           <span className={`text-white text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold font-serif-elegant whitespace-nowrap transition-all duration-300 ${
             isScrolled ? 'block' : 'hidden sm:block'
