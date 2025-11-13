@@ -49,7 +49,7 @@ const PaymentMethods: React.FC = () => {
               <div className="grid sm:grid-cols-3 gap-4">
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/instapay.png" alt="إنستاباي" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/0ymm5bjB/instapay.png" alt="إنستاباي" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">إنستاباي</span>
@@ -59,7 +59,7 @@ const PaymentMethods: React.FC = () => {
 
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/vodafone-cash.png" alt="فودافون كاش" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/qvnnBzgr/vodafone-cash.png" alt="فودافون كاش" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">فودافون كاش</span>
@@ -69,7 +69,7 @@ const PaymentMethods: React.FC = () => {
 
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/etisalat-cash.png" alt="اتصالات كاش" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/W1rrphzf/etisalat-cash.png" alt="اتصالات كاش" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">اتصالات كاش</span>
@@ -93,7 +93,7 @@ const PaymentMethods: React.FC = () => {
               <div className="grid sm:grid-cols-3 gap-4">
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/bank-transfer.png" alt="تحويل بنكي" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/Hk55WVnv/bank-transfer.png" alt="تحويل بنكي" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">تحويل بنكي (IBAN)</span>
@@ -103,7 +103,7 @@ const PaymentMethods: React.FC = () => {
 
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/western-union.png" alt="ويسترن يونيون" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/vHCfdW8w/western-union.png" alt="ويسترن يونيون" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">ويسترن يونيون</span>
@@ -113,7 +113,7 @@ const PaymentMethods: React.FC = () => {
 
                 <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all duration-300 border border-gray-100">
                   <div className="w-full h-16 flex items-center justify-center">
-                    <img src="logos/paypal.png" alt="باي بال" className="max-h-12 max-w-full object-contain" loading="eager" />
+                    <img src="https://i.postimg.cc/jSNNqL2m/paypal.png" alt="باي بال" className="max-h-12 max-w-full object-contain" loading="eager" />
                   </div>
                   <div className="text-center">
                     <span className="text-gray-700 font-semibold text-sm block">باي بال</span>
