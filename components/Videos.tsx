@@ -158,8 +158,8 @@ const Videos: React.FC = () => {
         </div>
 
         {selectedVideo && (
-          <div className="w-full max-w-2xl lg:max-w-3xl mx-auto mb-12">
-            <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+          <div className="w-full max-w-5xl mx-auto mb-12">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
                 title={selectedVideo.title}
