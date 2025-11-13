@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { DonateIcon, MenuIcon, CloseIcon } from './icons';
 
-const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-  <a href={href} className="text-white hover:text-warm-gold transition-colors duration-300 py-2">
-    {children}
-  </a>
-);
+const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <a href={href} onClick={handleClick} className="text-white hover:text-warm-gold transition-colors duration-300 py-2">
+      {children}
+    </a>
+  );
+};
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -102,7 +113,11 @@ const Header: React.FC = () => {
           <nav className="flex-1 flex flex-col gap-2 p-6 overflow-y-auto" style={{ backgroundColor: '#0a5439' }}>
             <a 
               href="#home" 
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
               className="text-white hover:bg-warm-gold/20 hover:text-warm-gold py-3 px-4 rounded-lg transition-all duration-300 flex items-center gap-3"
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }}
             >
@@ -114,7 +129,11 @@ const Header: React.FC = () => {
             
             <a 
               href="#why-us" 
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
               className="text-white hover:bg-warm-gold/20 hover:text-warm-gold py-3 px-4 rounded-lg transition-all duration-300 flex items-center gap-3"
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }}
             >
