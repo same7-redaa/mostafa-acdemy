@@ -2,30 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { ChatIcon } from '../components/icons';
-
-// قائمة الدول مع رموز الاتصال
-const countries = [
-  { code: '+20', name: 'مصر', flag: '🇪🇬', pattern: /^[0-9]{10}$/ },
-  { code: '+966', name: 'السعودية', flag: '🇸🇦', pattern: /^[0-9]{9}$/ },
-  { code: '+971', name: 'الإمارات', flag: '🇦🇪', pattern: /^[0-9]{9}$/ },
-  { code: '+965', name: 'الكويت', flag: '🇰🇼', pattern: /^[0-9]{8}$/ },
-  { code: '+968', name: 'عمان', flag: '🇴🇲', pattern: /^[0-9]{8}$/ },
-  { code: '+974', name: 'قطر', flag: '🇶🇦', pattern: /^[0-9]{8}$/ },
-  { code: '+973', name: 'البحرين', flag: '🇧🇭', pattern: /^[0-9]{8}$/ },
-  { code: '+962', name: 'الأردن', flag: '🇯🇴', pattern: /^[0-9]{9}$/ },
-  { code: '+961', name: 'لبنان', flag: '🇱🇧', pattern: /^[0-9]{8}$/ },
-  { code: '+963', name: 'سوريا', flag: '🇸🇾', pattern: /^[0-9]{9}$/ },
-  { code: '+964', name: 'العراق', flag: '🇮🇶', pattern: /^[0-9]{10}$/ },
-  { code: '+967', name: 'اليمن', flag: '🇾🇪', pattern: /^[0-9]{9}$/ },
-  { code: '+218', name: 'ليبيا', flag: '🇱🇾', pattern: /^[0-9]{9}$/ },
-  { code: '+213', name: 'الجزائر', flag: '🇩🇿', pattern: /^[0-9]{9}$/ },
-  { code: '+216', name: 'تونس', flag: '🇹🇳', pattern: /^[0-9]{8}$/ },
-  { code: '+212', name: 'المغرب', flag: '🇲🇦', pattern: /^[0-9]{9}$/ },
-  { code: '+249', name: 'السودان', flag: '🇸🇩', pattern: /^[0-9]{9}$/ },
-  { code: '+970', name: 'فلسطين', flag: '🇵🇸', pattern: /^[0-9]{9}$/ },
-  { code: '+1', name: 'أمريكا/كندا', flag: '🇺🇸', pattern: /^[0-9]{10}$/ },
-  { code: '+44', name: 'بريطانيا', flag: '🇬🇧', pattern: /^[0-9]{10}$/ },
-];
+import { countries, validatePhoneNumber } from '../utils/countries';
 
 const SessionPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -41,10 +18,8 @@ const SessionPage: React.FC = () => {
 
   const whatsappNumber = '201055222523';
 
-  const validatePhone = (countryCode: string, phone: string): boolean => {
-    const country = countries.find(c => c.code === countryCode);
-    if (!country) return false;
-    return country.pattern.test(phone);
+  const validatePhoneLocal = (countryCode: string, phone: string): boolean => {
+    return validatePhoneNumber(countryCode, phone);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,13 +27,13 @@ const SessionPage: React.FC = () => {
     setIsSubmitting(true);
     setError('');
 
-    if (!validatePhone(formData.countryCode, formData.phone)) {
+    if (!validatePhoneLocal(formData.countryCode, formData.phone)) {
       setError('رقم الهاتف غير صحيح للدولة المحددة');
       setIsSubmitting(false);
       return;
     }
 
-    if (!validatePhone(formData.whatsappCountryCode, formData.whatsapp)) {
+    if (!validatePhoneLocal(formData.whatsappCountryCode, formData.whatsapp)) {
       setError('رقم الواتساب غير صحيح للدولة المحددة');
       setIsSubmitting(false);
       return;
@@ -195,9 +170,10 @@ const SessionPage: React.FC = () => {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '') })}
                       className="flex-1 px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-lg text-black"
-                      placeholder="رقم الهاتف"
+                      placeholder="رقم الهاتف أو بدون البادئة"
                     />
                   </div>
+                  <p className="text-sm text-gray-600 mt-2">يمكنك إدخال الرقم المحلي (01023160657) أو بدون البادئة (1023160657)</p>
                 </div>
 
                 {/* رقم الواتساب */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import { CloseIcon } from './icons';
+import { countries, validatePhoneNumber, type Country } from '../utils/countries';
 
 interface StepBookingFormProps {
   isOpen: boolean;
@@ -11,30 +12,6 @@ interface StepBookingFormProps {
   priceUSD?: string;
   isGroupPackage?: boolean; // لتحديد إذا كانت باقة مجموعات
 }
-
-// قائمة الدول مع رموز الاتصال
-const countries = [
-  { code: '+20', name: 'مصر', flag: '🇪🇬', pattern: /^[0-9]{10}$/ },
-  { code: '+966', name: 'السعودية', flag: '🇸🇦', pattern: /^[0-9]{9}$/ },
-  { code: '+971', name: 'الإمارات', flag: '🇦🇪', pattern: /^[0-9]{9}$/ },
-  { code: '+965', name: 'الكويت', flag: '🇰🇼', pattern: /^[0-9]{8}$/ },
-  { code: '+968', name: 'عمان', flag: '🇴🇲', pattern: /^[0-9]{8}$/ },
-  { code: '+974', name: 'قطر', flag: '🇶🇦', pattern: /^[0-9]{8}$/ },
-  { code: '+973', name: 'البحرين', flag: '🇧🇭', pattern: /^[0-9]{8}$/ },
-  { code: '+962', name: 'الأردن', flag: '🇯🇴', pattern: /^[0-9]{9}$/ },
-  { code: '+961', name: 'لبنان', flag: '🇱🇧', pattern: /^[0-9]{8}$/ },
-  { code: '+963', name: 'سوريا', flag: '🇸🇾', pattern: /^[0-9]{9}$/ },
-  { code: '+964', name: 'العراق', flag: '🇮🇶', pattern: /^[0-9]{10}$/ },
-  { code: '+967', name: 'اليمن', flag: '🇾🇪', pattern: /^[0-9]{9}$/ },
-  { code: '+218', name: 'ليبيا', flag: '🇱🇾', pattern: /^[0-9]{9}$/ },
-  { code: '+213', name: 'الجزائر', flag: '🇩🇿', pattern: /^[0-9]{9}$/ },
-  { code: '+216', name: 'تونس', flag: '🇹🇳', pattern: /^[0-9]{8}$/ },
-  { code: '+212', name: 'المغرب', flag: '🇲🇦', pattern: /^[0-9]{9}$/ },
-  { code: '+249', name: 'السودان', flag: '🇸🇩', pattern: /^[0-9]{9}$/ },
-  { code: '+970', name: 'فلسطين', flag: '🇵🇸', pattern: /^[0-9]{9}$/ },
-  { code: '+1', name: 'أمريكا/كندا', flag: '🇺🇸', pattern: /^[0-9]{10}$/ },
-  { code: '+44', name: 'بريطانيا', flag: '🇬🇧', pattern: /^[0-9]{10}$/ },
-];
 
 const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, packageName, priceEGP, priceUSD, isGroupPackage = false }) => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -105,10 +82,8 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
     }
   }, [isSuccess, countdown, onClose]);
 
-  const validatePhone = (countryCode: string, phone: string): boolean => {
-    const country = countries.find(c => c.code === countryCode);
-    if (!country) return false;
-    return country.pattern.test(phone);
+  const validatePhoneLocal = (countryCode: string, phone: string): boolean => {
+    return validatePhoneNumber(countryCode, phone);
   };
 
   const validateName = (name: string): boolean => {
@@ -151,7 +126,7 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
         setError('الرجاء إدخال رقم الهاتف');
         return;
       }
-      if (!validatePhone(formData.countryCode, formData.phone)) {
+      if (!validatePhoneLocal(formData.countryCode, formData.phone)) {
         setError('رقم الهاتف غير صحيح للدولة المحددة');
         return;
       }
@@ -163,7 +138,7 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
         setError('الرجاء إدخال رقم الواتساب');
         return;
       }
-      if (!validatePhone(formData.countryCode, formData.whatsapp)) {
+      if (!validatePhoneLocal(formData.countryCode, formData.whatsapp)) {
         setError('رقم الواتساب غير صحيح للدولة المحددة');
         return;
       }
@@ -352,24 +327,32 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
                       value={countrySearch}
                       onChange={(e) => setCountrySearch(e.target.value)}
                       className="w-full px-3 py-2 sm:py-2.5 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base text-black"
-                      placeholder="ابحث عن دولتك..."
+                      placeholder="ابحث عن دولتك (مثال: مصر، السعودية)..."
                       autoFocus
                     />
-                    <div className="mt-1.5 max-h-40 sm:max-h-44 overflow-y-auto border-2 border-gray-200 rounded-lg">
-                      {filteredCountries.map((country) => (
-                        <button
-                          key={country.code}
-                          type="button"
-                          onClick={() => handleSelectCountry(country)}
-                          className={`w-full text-right px-3 py-1.5 hover:bg-purple-50 transition-colors flex items-center gap-2 text-xs sm:text-sm ${
-                            formData.country === country.name ? 'bg-purple-100' : ''
-                          }`}
-                        >
-                          <span className="text-lg sm:text-xl">{country.flag}</span>
-                          <span className="flex-1 font-medium text-black">{country.name}</span>
-                          <span className="text-gray-500 text-xs">{country.code}</span>
-                        </button>
-                      ))}
+                    <div className="mt-1.5 max-h-64 sm:max-h-96 overflow-y-auto border-2 border-gray-200 rounded-lg bg-white">
+                      {filteredCountries.length > 0 ? (
+                        filteredCountries.map((country) => (
+                          <button
+                            key={country.code}
+                            type="button"
+                            onClick={() => handleSelectCountry(country)}
+                            className={`w-full text-right px-3 py-2 hover:bg-purple-50 transition-colors flex items-center gap-2 text-xs sm:text-sm border-b border-gray-100 last:border-b-0 ${
+                              formData.country === country.name ? 'bg-purple-100' : ''
+                            }`}
+                          >
+                            <span className="text-lg sm:text-xl">{country.flag}</span>
+                            <div className="flex-1 text-right">
+                              <div className="font-medium text-black">{country.name}</div>
+                              <div className="text-gray-500 text-xs">{country.code}</div>
+                            </div>
+                          </button>
+                        ))
+                      ) : (
+                        <div className="px-3 py-4 text-center text-gray-500 text-sm">
+                          لا توجد نتائج. جرب البحث باسم آخر
+                        </div>
+                      )}
                     </div>
                     {formData.country && (
                       <p className="text-xs text-green-600 mt-1">✓ تم اختيار: {formData.country}</p>
@@ -396,12 +379,12 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
                         autoFocus
                       />
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">الرقم يجب أن يتطابق مع شروط {formData.country}</p>
+                    <p className="text-xs text-gray-500 mt-1">يمكنك إدخال الرقم المحلي أو بدون البادئة</p>
                   </div>
                 </div>
               )}
 
-              {/* Step 4: رقم الواتساب */}
+              {/* Step 5: عدد الطلاب */}
               {currentStep === 4 && (
                 <div className="space-y-3">
                   <div>

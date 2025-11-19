@@ -103,7 +103,7 @@ const Ijazat: React.FC = () => {
                       <div>
                         <h4 className="font-bold text-white text-xl mb-2">الرواية</h4>
                         <p className="text-gray-100 leading-relaxed">
-                          إجازة في القرآن الكريم برواية حفص عن عاصم
+                          إجازة في القرآن الكريم برواية عاصم (حفص وشعبة)
                         </p>
                       </div>
                     </div>
@@ -159,7 +159,7 @@ const Ijazat: React.FC = () => {
                     <StarIcon className="w-4 h-4" />
                   </span>
                   <span className="text-gray-700 leading-relaxed flex-1 pt-1">
-                    القراءة الصحيحة برواية حفص عن عاصم
+                    القراءة الصحيحة برواية عاصم (حفص وشعبة)
                   </span>
                 </li>
                 <li className="flex items-start gap-3 group">
@@ -184,7 +184,7 @@ const Ijazat: React.FC = () => {
               <div className="space-y-6">
                 <div className="bg-white rounded-xl p-6 shadow-md">
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    تختلف مدة الحصول على الإجازة حسب مستوى الحفظ والإتقان، وعادةً ما تتراوح من <span className="font-bold text-emerald-green">6 أشهر إلى سنة</span> للمتقنين.
+                    تختلف مدة الحصول على الإجازة حسب مستوى الحفظ والإتقان، وعادةً ما تتراوح من <span className="font-bold text-emerald-green">شهرين إلى سنة</span> للمتقنين.
                   </p>
                   <div className="border-t border-gray-200 pt-4 mt-4">
                     <p className="text-sm text-gray-600">للاستفسار عن التكلفة والتفاصيل، يرجى التقديم عبر الزر أدناه</p>

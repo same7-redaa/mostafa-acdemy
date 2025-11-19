@@ -333,6 +333,27 @@ const Packages: React.FC = () => {
                 <StarIcon className="w-5 h-5 text-soft-gold mt-1 flex-shrink-0" />
                 <p className="text-gray-700 text-sm leading-relaxed">لتطوير الذات وتحسين التوازن النفسي والتربوي.</p>
               </div>
+              <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+                <h4 className="font-bold text-blue-900 text-sm mb-3">الفوائد:</h4>
+                <ul className="space-y-2 text-xs text-blue-800">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>تحسين الثقة بالنفس والقدرات الذاتية</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>تطوير مهارات التواصل والعلاقات الشخصية</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>تحديد الأهداف والخطط العملية لتحقيقها</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>التغلب على التحديات والعقبات النفسية</span>
+                  </li>
+                </ul>
+              </div>
               <button
                 onClick={() => handleBooking('جلسة كوتشينج فردية', '1800 جنيه', '75 دولار', false)}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center mt-auto"
@@ -410,7 +431,7 @@ const Packages: React.FC = () => {
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-emerald-green mb-4">تعليم اللغة العربية</h2>
           <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-            دورات احترافية لتعليم اللغة العربية للناطقين بغيرها مع معلمين متخصصين
+            برامج تعليمية متقدمة للناطقين بالعربية وغير الناطقين بها مع معلمين متخصصين
           </p>
         </div>
 
