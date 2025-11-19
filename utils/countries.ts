@@ -116,7 +116,6 @@ export const countries: Country[] = [
   { code: '+233', name: 'غانا', flag: '🇬🇭', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },
   { code: '+221', name: 'السنغال', flag: '🇸🇳', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },
   { code: '+225', name: 'ساحل العاج', flag: '🇨🇮', pattern: /^[0-9]{8}$/, minLength: 8, maxLength: 8 },
-  { code: '+212', name: 'المغرب', flag: '🇲🇦', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },
   { code: '+244', name: 'أنغولا', flag: '🇦🇴', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },
   { code: '+260', name: 'زامبيا', flag: '🇿🇲', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },
   { code: '+263', name: 'زيمبابوي', flag: '🇿🇼', pattern: /^[0-9]{9}$/, minLength: 9, maxLength: 9 },

@@ -62,10 +62,14 @@ const StepBookingForm: React.FC<StepBookingFormProps> = ({ isOpen, onClose, pack
     if (countrySearch.trim() === '') {
       setFilteredCountries(countries);
     } else {
-      const filtered = countries.filter(country =>
-        country.name.includes(countrySearch) ||
-        country.code.includes(countrySearch)
-      );
+      const searchTerm = countrySearch.trim().toLowerCase();
+      const filtered = countries.filter(country => {
+        const countryNameLower = country.name.toLowerCase();
+        // البحث عن الكلمة كاملة أو من البداية
+        return countryNameLower.includes(searchTerm) || 
+               countryNameLower.startsWith(searchTerm) ||
+               country.code.includes(searchTerm);
+      });
       setFilteredCountries(filtered);
     }
   }, [countrySearch]);
